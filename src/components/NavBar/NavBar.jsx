@@ -2,9 +2,9 @@ import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
-import CartWidget from '../StateLess/CartWidget/CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 
-const NavBar = () => {
+const NavBar = ({ cartCounter }) => {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 			<Container className="container-fluid">
@@ -19,7 +19,7 @@ const NavBar = () => {
 					</Nav>
 					<Nav>
 						<Nav.Link href='#cart'>
-							<CartWidget />
+							<CartWidget cartCounter={cartCounter} />
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
