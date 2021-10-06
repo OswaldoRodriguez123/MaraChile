@@ -6,7 +6,7 @@ function Main() {
 
 	const [cartCounter, setCartCounter] = useState(0);
 
-	const addToCardWidget = (articles) => {
+	const onAdd = (articles) => {
 		setCartCounter(cartCounter + articles)
 	}
 
@@ -17,7 +17,7 @@ function Main() {
 	return (
 		<div>
 			<NavBar cartCounter={cartCounter} />
-			<ItemListContainer addToCardWidget={addToCardWidget} />
+			<ItemListContainer onAdd={onAdd} />
 		</div>
 	);
 }

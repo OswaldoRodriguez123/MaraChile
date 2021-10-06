@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import ItemCount from "../ItemCount/ItemCount";
 
 const Item = ({
-	item: { id, title, description, price, pictureUrl, stock }, addToCardWidget
+	item: { id, title, description, price, pictureUrl, stock }, onAdd
 }) => {
-
-	const [quantity, setQuantity] = useState(1);
-	
-	function add() {
-		if (quantity < stock) setQuantity(quantity + 1);
-	}
-
-	function remove() {
-		if (quantity > 1) setQuantity(quantity - 1);
-	}
 
 	return (
 		<div className="col-sm-12 col-xs-12 col-md-8 col-lg-5 col-xl-4">
@@ -21,14 +12,10 @@ const Item = ({
 				<div className="card-body">
 					<h5 className="card-title">{title}</h5>
 					<p className="card-text">Stock: {stock}</p>
-					<div className="w-100 d-flex mt-2">
-						<button onClick={() => remove()} className="btn col-xs-6 btn-primary mx-auto">-</button>
-						<span>Cantidad : {quantity} </span>
-						<button onClick={() => add()} className="btn col-xs-6 btn-warning mx-auto">+</button>
-					</div>
-					<div className="row">
-						<button onClick={() => addToCardWidget(quantity)} className="btn btn-success my-3">Agregar al Carrito</button>
-					</div>
+					<ItemCount
+						stock={stock}
+						onAdd={onAdd}
+					/>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from "../Item/Item";
 
-const ItemList = ({ items, addToCardWidget }) => {
+const ItemList = ({ items, onAdd }) => {
 
 	return (
 		<div className="container p-3 my-4">
@@ -10,7 +10,7 @@ const ItemList = ({ items, addToCardWidget }) => {
 						<Item
 							key={item.id}
 							item={item}
-							addToCardWidget={addToCardWidget}
+							onAdd={onAdd}
 						/>
 					)
 				}
