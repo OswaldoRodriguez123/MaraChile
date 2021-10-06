@@ -14,13 +14,15 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
 
 	return (
 		<div>
-            <div className="w-100 d-flex mt-2">
-                <button onClick={() => remove()} className="btn col-xs-6 btn-dark mx-auto">-</button>
-                <span>Cantidad : {quantity} </span>
-                <button onClick={() => add()} className="btn col-xs-6 btn-dark mx-auto">+</button>
+            <div className="d-flex mt-2 w-auto bg-white p-2">
+                <button onClick={() => remove()} className="btn col-xs-6 btn-dark">-</button>
+                <span className="my-auto mx-auto">Cantidad : {quantity} </span>
+                <button onClick={() => add()} className="btn col-xs-6 btn-dark float-right">+</button>
             </div>
             <div className="row">
-                <button onClick={() => onAdd(quantity)} className="btn btn-dark my-3">Agregar al Carrito</button>
+                <div className="col-xs-12">
+                    <button onClick={() => onAdd(quantity)} className="btn btn-dark w-100 mt-3">Agregar al Carrito</button>
+                </div>
             </div>
         </div>
 	);

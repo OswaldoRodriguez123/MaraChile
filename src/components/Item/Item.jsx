@@ -7,7 +7,7 @@ const Item = ({
 
 	return (
 		<div className="col-sm-12 col-xs-12 col-md-8 col-lg-5 col-xl-4">
-			<div className="card">
+			<div className="card bg-light">
 				<img src={pictureUrl} className="card-pictureUrl-top" alt="..." />
 				<div className="card-body">
 					<h5 className="card-title">{title}</h5>
