@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 
-const ItemCount = ({ stock, initial = 1, onAdd }) => {
+const ItemCount = ({ item, item: { stock }, initial = 1, onAdd }) => {
 
 	const [quantity, setQuantity] = useState(initial);
 	
-    function add() {
+    const add = () => {
 		if (quantity < stock) setQuantity(quantity + 1);
 	}
 
-	function remove() {
+	const remove = () => {
 		if (quantity > 1) setQuantity(quantity - 1);
-	}
+    }
+    
+    const addToCart = () => {
+        const itemCart = { ...item, quantity }
+        onAdd(itemCart);
+        setQuantity(item.stock >= 1 ? 1 : 0);
+    }
 
 	return (
 		<div>
@@ -21,7 +27,7 @@ const ItemCount = ({ stock, initial = 1, onAdd }) => {
             </div>
             <div className="row">
                 <div className="col-xs-12">
-                    <button onClick={() => onAdd(quantity)} className="btn btn-dark w-100 mt-3">Agregar al Carrito</button>
+                    <button onClick={() => addToCart()} className="btn btn-dark w-100 mt-3">Agregar al Carrito</button>
                 </div>
             </div>
         </div>

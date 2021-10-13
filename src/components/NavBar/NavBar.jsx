@@ -1,26 +1,25 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
-import { Nav } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 import CartWidget from '../CartWidget/CartWidget';
 
-const NavBar = ({ cartCounter }) => {
+const NavBar = ({ cart }) => {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 			<Container className="container-fluid">
-				<Navbar.Brand href='#index'>MaraChile</Navbar.Brand>
+				<Link className="nav-link" to='/'><Navbar.Brand>MaraChile</Navbar.Brand></Link>
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav'>
 					<Nav className='ms-auto'>
-						<Nav.Link className="px-3" href='#index'>Inicio</Nav.Link>
-						<Nav.Link className="px-3" href='#products'>Productos</Nav.Link>
-						<Nav.Link className="px-3" href='#about'>Nosotros</Nav.Link>
-						<Nav.Link className="px-3" href='#contact'>Contacto</Nav.Link>
+						<Link className="p-3 nav-link" to='/'>Inicio</Link>
+						<Link className="p-3 nav-link" to='/category/1'>PlayStation</Link>
+						<Link className="p-3 nav-link" to='/category/2'>Nintendo</Link>
+						<Link className="p-3 nav-link" to='/category/3'>Xbox</Link>
 					</Nav>
 					<Nav>
-						<Nav.Link href='#cart'>
-							<CartWidget cartCounter={cartCounter} />
-						</Nav.Link>
+						<Link className="nav-link" to='/cart'>
+							<CartWidget cart={cart} />
+						</Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

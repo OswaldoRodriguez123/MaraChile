@@ -1,23 +1,27 @@
-import React, { useState } from 'react';
-import NavBar from '../NavBar/NavBar.jsx';
-import ItemListContainer from '../ItemListContainer/ItemListContainer.jsx';
+import React from 'react';
+import NavBar from '../NavBar/NavBar';
+import Routes from '../Routes/Routes';
+import { useState } from 'react';
 
 function Main() {
 
-	const [cartCounter, setCartCounter] = useState(0);
+	const [cart, setCart] = useState([]);
 
-	const onAdd = (articles) => {
-		setCartCounter(cartCounter + articles)
+	const onAdd = (item) => {
+		let newCart = cart.map((currentItem) => {
+			if (currentItem.id === item.id) currentItem.quantity += item.quantity;
+			return {
+				...currentItem
+			}
+		});
+		!newCart.some(currentItem => currentItem.id === item.id) && newCart.push(item);
+		setCart(newCart);
 	}
-
-	// useEffect(() => {
-	// 	console.log("se agrego un item")
-	// }, [cartCounter])
 
 	return (
 		<div>
-			<NavBar cartCounter={cartCounter} />
-			<ItemListContainer onAdd={onAdd} />
+			<NavBar cart={cart} />
+			<Routes onAdd={onAdd} />
 		</div>
 	);
 }
