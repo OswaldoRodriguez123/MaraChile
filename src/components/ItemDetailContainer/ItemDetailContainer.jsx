@@ -1,42 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { useCartContext } from '../../contexts/CartContext';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import products from "../../data/products.json";
 
-const ItemListContainer = ({ onAdd }) => {
+const ItemDetailContainer = () => {
     const { id } = useParams();
 	const [item, setItem] = useState({});
+	const { cart, handleAddItem } = useCartContext();
 
 	useEffect(() => {
-		
-		const getItem = new Promise((resolve, reject) => {
-			const data = {
-				status: 200,
-				message: 'OK',
-				rows: products.find(p => p.id === parseInt(id))
-			}
-			setTimeout(() => {
-                if (data.status === 200) {
-                    console.log(data);
-					resolve(data.rows);
-				} else {
-					reject(data.message)
+		if (item && Object.keys(item).length === 0) {
+			const getItem = new Promise((resolve, reject) => {
+				const data = {
+					status: 200,
+					message: 'OK',
+					rows: products.find(p => p.id === parseInt(id))
 				}
-			}, 3000);
-        });
-        if (item && Object.keys(item).length === 0) {
+				setTimeout(() => {
+					if (data.status === 200) {
+						console.log(data);
+						resolve(data.rows);
+					} else {
+						reject(data.message)
+					}
+				}, 3000);
+			});
             getItem.then(data => {
 				setItem(data);
 			}).catch((error) => {
 				console.log(error);
 			});
 		}
-	}, [id, item, setItem]);
+	}, [id, item]);
 
 	const handleAdd = (item) => {
 		item.stock -= item.quantity;
 		setItem(item);
 		onAdd(item);
+	}
+
+	const onAdd = (item) => {
+		let newCart = cart.map((currentItem) => {
+			if (currentItem.id === item.id) currentItem.quantity += item.quantity;
+			return {
+				...currentItem
+			}
+		});
+		!newCart.some(currentItem => currentItem.id === item.id) && newCart.push(item);
+		handleAddItem(newCart);
 	}
 	
 	return (
@@ -48,4 +60,4 @@ const ItemListContainer = ({ onAdd }) => {
 	);
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;

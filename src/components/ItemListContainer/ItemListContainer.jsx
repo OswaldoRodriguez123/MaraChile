@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import products from "../../data/products.json";
 
-const ItemListContainer = ({ onAdd }) => {
+const ItemListContainer = () => {
 	const { id } = useParams();
 	const [items, setItems] = useState([]);
 
@@ -29,23 +29,12 @@ const ItemListContainer = ({ onAdd }) => {
 			console.log(error);
 		});
 		
-	}, [id, items, setItems]);
+	}, [id, items]);
 
-	const handleAdd = (item) => {
-		const currentItems = items.map(currentItem => {
-			if (currentItem.id === item.id) currentItem.stock -= item.quantity;
-			return {
-				...currentItem
-			}
-		})
-		setItems(currentItems);
-		onAdd(item);
-	}
-	
 	return (
 		<div className="container p-3 my-4">
 			<div className="row">
-				{items && <ItemList items={items} onAdd={handleAdd} />}
+				{items && <ItemList items={items} />}
 			</div>
 		</div>
 	);

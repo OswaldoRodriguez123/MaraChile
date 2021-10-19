@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import CartWidget from '../CartWidget/CartWidget';
 
-const NavBar = ({ cart }) => {
+const NavBar = () => {
 	return (
 		<Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
 			<Container className="container-fluid">
@@ -18,7 +18,7 @@ const NavBar = ({ cart }) => {
 					</Nav>
 					<Nav>
 						<Link className="nav-link" to='/cart'>
-							<CartWidget cart={cart} />
+							<CartWidget />
 						</Link>
 					</Nav>
 				</Navbar.Collapse>

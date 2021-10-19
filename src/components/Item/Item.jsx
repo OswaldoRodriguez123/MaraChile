@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Item = ({
-	item, item: { id, title, description, price, pictureUrl, stock }, onAdd
+	item, item: { id, title, description, price, pictureUrl, stock }
 }) => {
 
 	return (
