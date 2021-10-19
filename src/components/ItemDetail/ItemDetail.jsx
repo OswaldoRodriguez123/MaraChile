@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 
 const Item = ({
@@ -13,10 +14,20 @@ const Item = ({
                     <h6 className="card-subtitle mb-1">{new Intl.NumberFormat().format(price)}</h6>
                     <p className="card-text">{description}</p>
                     <p className="card-text">Stock: {stock}</p>
-                    <ItemCount
-                        item={item}
-                        onAdd={onAdd}
-                    />
+                    <div className="d-flex justify-content-center w-100">
+                        <Link to={`/`}><button className="btn btn-dark">Volver</button></Link>
+                    </div>
+                    {stock > 0 &&
+                        <ItemCount
+                            item={item}
+                            onAdd={onAdd}
+                        />
+                    }
+                    {stock === 0 &&
+                        <div className="d-flex justify-content-center w-100 mt-3">
+                            <Link to={`/cart`}><button className="btn btn-dark">Terminar Compra</button></Link>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
