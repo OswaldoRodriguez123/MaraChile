@@ -33,7 +33,7 @@ const Item = ({
                         />
                     ) : (
                         <div className="d-flex justify-content-center w-100 mt-3">
-                            <Link to={`/cart`}><button className="btn btn-dark">Terminar Compra</button></Link>
+                            <Link to={`/cart`}><button className="btn btn-dark">Ir al carrito</button></Link>
                         </div>
                     )}
                 </div>

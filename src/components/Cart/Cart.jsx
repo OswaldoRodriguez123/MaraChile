@@ -31,7 +31,7 @@ function Cart() {
                     <div>
                         <h4>
                             Carro: {quantity} {quantity.length !== 1 ? 'Productos' : 'Producto'}
-                            <FontAwesomeIcon icon={faTrash} className="mx-2" role="button" onClick={handleClear} />
+                            <FontAwesomeIcon icon={faTrash} className="mx-2 fa-xs" role="button" onClick={handleClear} title="Limpiar el carrito" />
                         </h4>
                     </div>
                     <div className="row">
@@ -54,7 +54,10 @@ function Cart() {
                                             </div>
                                             <div className="col-12">
                                                 <h6 className="card-subtitle">Total: {formatCurrency(total)}</h6>
-                                            </div> 
+                                            </div>
+                                            <div className="col-12 mt-4">
+                                                <button className="btn btn-dark">Terminar mi compra</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

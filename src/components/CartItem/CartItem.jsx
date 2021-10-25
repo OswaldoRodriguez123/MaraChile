@@ -30,7 +30,7 @@ const CartItem = ({ item: { id, title, description, price, pictureUrl, quantity 
                                 <p className="card-text">{formatCurrency(price)} x {quantity} = {formatCurrency(subtotal)}</p>
                             </div>
                             <div className="col-1 d-flex  align-items-center justify-content-center">
-                                <FontAwesomeIcon icon={faTrash} role="button" onClick={handleRemove} />
+                                <FontAwesomeIcon icon={faTrash} role="button" onClick={handleRemove} title="Eliminar producto" />
                             </div>
                         </div>
                     </div>
