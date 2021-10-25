@@ -20,12 +20,12 @@ const ItemCount = ({ item, item: { stock }, initial = 1, onAdd }) => {
 	return (
 		<div>
             <div className="d-flex mt-2 w-auto bg-white p-2">
-                <button onClick={() => remove()} className="btn col-xs-6 btn-dark">-</button>
+                <button onClick={() => remove()} className="btn btn-dark">-</button>
                 <span className="my-auto mx-auto">Cantidad : {quantity} </span>
-                <button onClick={() => add()} className="btn col-xs-6 btn-dark float-right">+</button>
+                <button onClick={() => add()} className="btn btn-dark float-right">+</button>
             </div>
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <button onClick={() => addToCart()} className="btn btn-dark w-100 mt-3">Agregar al Carrito</button>
                 </div>
             </div>

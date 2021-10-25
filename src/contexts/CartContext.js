@@ -29,6 +29,8 @@ function CartContextProvider({ children }) {
         <CartContext.Provider value={{
             cart,
             addItem,
+            removeItem,
+            clear,
             isInCart
         }}>
             {children}
