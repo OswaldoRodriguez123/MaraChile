@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import { useCartContext } from '../../contexts/CartContext';
 import ItemDetail from "../ItemDetail/ItemDetail";
 import products from "../../data/products.json";
 import Loading from '../Loading/Loading';
@@ -8,7 +7,6 @@ import Loading from '../Loading/Loading';
 const ItemDetailContainer = () => {
     const { id } = useParams();
 	const [item, setItem] = useState({});
-	const { cart, handleAddItem } = useCartContext();
 
 	useEffect(() => {
 		setItem({});
@@ -33,27 +31,10 @@ const ItemDetailContainer = () => {
 		});
 	}, [id]);
 
-	const handleAdd = (item) => {
-		item.stock -= item.quantity;
-		setItem(item);
-		onAdd(item);
-	}
-
-	const onAdd = (item) => {
-		let newCart = cart.map((currentItem) => {
-			if (currentItem.id === item.id) currentItem.quantity += item.quantity;
-			return {
-				...currentItem
-			}
-		});
-		!newCart.some(currentItem => currentItem.id === item.id) && newCart.push(item);
-		handleAddItem(newCart);
-	}
-	
 	return (
 		<div className="container p-3 my-4">
 			<div className="row justify-content-center">
-				{Object.keys(item).length > 0 && <ItemDetail item={item} onAdd={handleAdd} />}
+				{Object.keys(item).length > 0 && <ItemDetail item={item} setItem={setItem} />}
 				{Object.keys(item).length === 0 && <Loading />}
 			</div>
 		</div>

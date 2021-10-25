@@ -13,8 +13,7 @@ const ItemCount = ({ item, item: { stock }, initial = 1, onAdd }) => {
     }
     
     const addToCart = () => {
-        const itemCart = { ...item, quantity }
-        onAdd(itemCart);
+        onAdd(item, quantity);
         setQuantity(item.stock >= 1 ? 1 : 0);
     }
 

@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCartContext } from '../../contexts/CartContext';
 import ItemCount from "../ItemCount/ItemCount";
 
 const Item = ({
-	item, item: { title, description, price, pictureUrl, stock }, onAdd
+	item, item: { title, description, price, pictureUrl, stock }, setItem
 }) => {
+    const { addItem, isInCart } = useCartContext();
+
+    const onAdd = (item, quantity) => {
+        item.stock -= quantity;
+		setItem(item);
+		addItem(item, quantity);
+	}
+	
     return (
         <div className="col-sm-12 col-xs-12 col-md-8 col-lg-5 col-xl-4">
             <div className="card bg-light">
@@ -17,17 +26,16 @@ const Item = ({
                     <div className="d-flex justify-content-center w-100">
                         <Link to={`/`}><button className="btn btn-dark">Volver</button></Link>
                     </div>
-                    {stock > 0 &&
+                    {!isInCart(item.id) ? (
                         <ItemCount
                             item={item}
                             onAdd={onAdd}
                         />
-                    }
-                    {stock === 0 &&
+                    ) : (
                         <div className="d-flex justify-content-center w-100 mt-3">
                             <Link to={`/cart`}><button className="btn btn-dark">Terminar Compra</button></Link>
                         </div>
-                    }
+                    )}
                 </div>
             </div>
         </div>
