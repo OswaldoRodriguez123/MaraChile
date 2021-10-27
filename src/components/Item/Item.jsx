@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Item = ({ item: { id, title, description, price, pictureUrl, stock } }) => {
+const Item = ({ item: { id, title, pictureUrl, stock } }) => {
 
 	return (
 		<div className="col-sm-12 col-12 col-md-8 col-lg-5 col-xl-4">
