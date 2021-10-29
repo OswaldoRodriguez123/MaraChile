@@ -14,7 +14,7 @@ const ItemListContainer = () => {
 		setLoading(true);
 		let condition = null;
 		if (id) condition = ['category', '==', parseInt(id)];
-		getDocs('Items', condition).then(data => {
+		getDocs('items', condition).then(data => {
 			setItems(data);
 			setLoading(false);
 		}).catch((error) => {

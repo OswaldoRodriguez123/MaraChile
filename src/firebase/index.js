@@ -33,3 +33,29 @@ export const getDocs = (collection_name, condition = null) => {
         resolve(docs);
     });
 }
+
+export const createDoc = (collection_name, data ) => {
+    return new Promise(async (resolve, reject) => {
+        const db = getFirestore();
+        const collection = db.collection(collection_name);
+        const doc = await collection.add(data);
+
+        resolve(doc);
+    });
+}
+
+export const updateDocs = (collection_name, condition, data) => {
+    return new Promise(async (resolve, reject) => {
+        const db = getFirestore();
+        const batch = db.batch();
+
+        const collection = await db.collection(collection_name).where(...condition).get();
+        collection.docs.forEach(doc => {
+            batch.update(doc.ref, data.find(item => item.id === doc.id));
+        });
+        
+        let result = await batch.commit();
+        if (!result) result = true;
+        resolve(result);
+    });
+}

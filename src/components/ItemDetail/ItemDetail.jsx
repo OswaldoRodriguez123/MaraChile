@@ -7,12 +7,6 @@ const Item = ({
 	item, item: { title, description, price, pictureUrl, stock }, setItem
 }) => {
     const { addItem, isInCart } = useCartContext();
-
-    const onAdd = (item, quantity) => {
-        item.stock -= quantity;
-		setItem(item);
-		addItem(item, quantity);
-	}
 	
     return (
         <div className="col-sm-12 col-12 col-md-8 col-lg-5 col-xl-4">
@@ -29,7 +23,7 @@ const Item = ({
                     {!isInCart(item.id) ? (
                         <ItemCount
                             item={item}
-                            onAdd={onAdd}
+                            onAdd={addItem}
                         />
                     ) : (
                         <div className="d-flex justify-content-center w-100 mt-3">

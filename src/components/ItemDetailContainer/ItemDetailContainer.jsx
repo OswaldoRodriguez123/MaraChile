@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
 	useEffect(() => {
 		setLoading(true);
 		const condition = ['__name__', '==', id];
-		getDocs('Items', condition).then(data => {
+		getDocs('items', condition).then(data => {
 			setItem(data[0]);
 			setLoading(false);
 		}).catch((error) => {
