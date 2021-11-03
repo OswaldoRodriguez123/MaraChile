@@ -112,7 +112,7 @@ const Order = () => {
                                 {errors.email}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-3" controlId="formBasicEmailConfirm">
                             <Form.Label>Confirmar Correo</Form.Label>
                             <Form.Control
                                 type="email"
