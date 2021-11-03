@@ -9,7 +9,7 @@ import { isValidName, isValidPhone, isValidEmail } from '../../helpers/helper';
 import { createDoc, updateDocs } from '../../firebase';
 import Swal from 'sweetalert2'
 
-function Order() {
+const Order = () => {
     const [loading, setLoading] = useState(false);
     const { cart, clear, getTotal } = useCartContext();
     const { total } = getTotal();
@@ -26,19 +26,19 @@ function Order() {
         })
     }
 
-    const REQUIRED_MESSAGE = "Este campo es requerido.";
+    const requiredMessage = "Este campo es requerido.";
 
     const findFormErrors = () => {
         const { name, email, emailConfirm, phone } = buyer
         const newErrors = {}
 
-        if (!name || name === '') newErrors.name = REQUIRED_MESSAGE;
+        if (!name || name === '') newErrors.name = requiredMessage;
         else if (!isValidName(name)) newErrors.name = "El nombre es inválido";
-        if (!email || email === '') newErrors.email = REQUIRED_MESSAGE;
+        if (!email || email === '') newErrors.email = requiredMessage;
         else if (!isValidEmail(email)) newErrors.email = "Correo electrónico inválido";
-        if (!emailConfirm || emailConfirm === '') newErrors.emailConfirm = REQUIRED_MESSAGE;
+        if (!emailConfirm || emailConfirm === '') newErrors.emailConfirm = requiredMessage;
         else if (email !== emailConfirm) newErrors.emailConfirm = "Correo electrónico no coincide";
-        if (!phone || phone === '') newErrors.phone = REQUIRED_MESSAGE;
+        if (!phone || phone === '') newErrors.phone = requiredMessage;
         else if (!isValidPhone(phone)) newErrors.phone = "El número de contacto es inválido";
     
         return newErrors
