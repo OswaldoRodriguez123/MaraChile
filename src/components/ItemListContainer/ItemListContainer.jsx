@@ -18,9 +18,10 @@ const ItemListContainer = () => {
 		if (id) condition = ['category', '==', +id];
 		getDocs('items', condition).then(data => {
 			setItems(data);
-			setLoading(false);
 		}).catch((error) => {
 			Swal.fire('Error!', error, 'error');
+		}).finally(() => {
+			setLoading(false);
 		});
 	}, [id]);
 

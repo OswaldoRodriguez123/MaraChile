@@ -17,9 +17,10 @@ const ItemDetailContainer = () => {
 		const condition = ['__name__', '==', id];
 		getDocs('items', condition).then(data => {
 			setItem(data[0]);
-			setLoading(false);
 		}).catch((error) => {
 			Swal.fire('Error!', error, 'error');
+		}).finally(() => {
+			setLoading(false);
 		});
 	}, [id]);
 
