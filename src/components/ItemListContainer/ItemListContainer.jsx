@@ -4,6 +4,8 @@ import ItemList from "../ItemList/ItemList";
 import { getDocs } from '../../firebase';
 import Loading from '../Loading/Loading';
 import EmptyList from '../EmptyList/EmptyList';
+import Container from '../Container/Container';
+import Swal from 'sweetalert2'
 
 const ItemListContainer = () => {
 	const { id } = useParams();
@@ -13,24 +15,23 @@ const ItemListContainer = () => {
 	useEffect(() => {
 		setLoading(true);
 		let condition = null;
-		if (id) condition = ['category', '==', parseInt(id)];
+		if (id) condition = ['category', '==', +id];
 		getDocs('items', condition).then(data => {
 			setItems(data);
 			setLoading(false);
 		}).catch((error) => {
-			console.log(error);
+			Swal.fire('Error!', error, 'error');
 		});
-		
 	}, [id]);
 
 	return (
-		<div className="container p-3 my-4">
+		<Container>
 			<div className="row">
 				{!loading && items && <ItemList items={items} />}
 				{!loading && items.length === 0 && <EmptyList />}
 				{loading && <Loading />}
 			</div>
-		</div>
+		</Container>
 	);
 };
 

@@ -1,0 +1,7 @@
+#spinnerContainer{
+    height: 70vh;
+}
+.spinner-border{
+    width: 6em;
+    height: 6em;
+}

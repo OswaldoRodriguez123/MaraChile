@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import ItemListContainer from '../ItemListContainer/ItemListContainer';
 import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 import Cart from '../Cart/Cart';
+import Order from '../Order/Order';
 
 function Routes() {
     return (
@@ -19,6 +20,9 @@ function Routes() {
                 </Route>
                 <Route exact path="/cart" >
                     <Cart />
+                </Route>
+                <Route exact path="/order" >
+                   <Order />
                 </Route>
             </Switch>
         </div>

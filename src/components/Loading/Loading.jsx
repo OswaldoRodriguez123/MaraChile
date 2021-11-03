@@ -1,9 +1,10 @@
 import React from 'react';
+import "./Loading.css";
 
 const Loading = () => {
     return (
-        <div className="d-flex align-items-center justify-content-center" style={{ height: "70vh" }}>
-            <div className="spinner-border" role="status" style={{ width: '6em', height: '6em' }}>
+        <div id="spinnerContainer" className="d-flex align-items-center justify-content-center">
+            <div className="spinner-border" role="status">
                 <span className="sr-only"></span>
             </div>
         </div>

@@ -1,3 +1,13 @@
-p{
+#cartWidgetIcon{
 	margin-bottom: 0;
+}
+
+#cartWidgetContainer{
+	padding-left: 1rem;
+}
+
+@media (max-width: 576px){
+	#cartWidgetContainer{
+		padding-left: 3rem;
+	}
 }

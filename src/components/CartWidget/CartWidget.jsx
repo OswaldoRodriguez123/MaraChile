@@ -19,8 +19,8 @@ const CartWidget = () => {
 	const cartWidgetIcon = <FontAwesomeIcon icon={faShoppingCart} />;
 	
 	return (
-		<div className="ps-5">
-			<p>{cartWidgetIcon} {cartCounter}</p>
+		<div id="cartWidgetContainer">
+			<p id="cartWidgetIcon">{cartWidgetIcon} {cartCounter}</p>
 		</div>
 	);
 };

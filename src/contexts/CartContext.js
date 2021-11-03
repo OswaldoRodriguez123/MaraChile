@@ -24,6 +24,15 @@ function CartContextProvider({ children }) {
     }
     const clear = () => setCart([]);
     const isInCart = (id) => cart.some(item => item.id === id);
+    const getTotal = () => {
+        let total = 0;
+        let quantity = 0;
+        cart.forEach(item => {
+            total += (item.quantity * item.price);
+            quantity += item.quantity;
+        })
+        return { total, quantity };
+    }
 
     return (
         <CartContext.Provider value={{
@@ -31,7 +40,8 @@ function CartContextProvider({ children }) {
             addItem,
             removeItem,
             clear,
-            isInCart
+            isInCart,
+            getTotal
         }}>
             {children}
         </CartContext.Provider>

@@ -4,6 +4,8 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { getDocs } from '../../firebase';
 import Loading from '../Loading/Loading';
 import EmptyList from '../EmptyList/EmptyList';
+import Container from '../Container/Container';
+import Swal from 'sweetalert2'
 
 const ItemDetailContainer = () => {
     const { id } = useParams();
@@ -17,18 +19,18 @@ const ItemDetailContainer = () => {
 			setItem(data[0]);
 			setLoading(false);
 		}).catch((error) => {
-			console.log(error);
+			Swal.fire('Error!', error, 'error');
 		});
 	}, [id]);
 
 	return (
-		<div className="container p-3 my-4">
+		<Container>
 			<div className="row justify-content-center">
 				{!loading && Object.keys(item).length > 0 && <ItemDetail item={item} setItem={setItem} />}
 				{!loading && Object.keys(item).length === 0 && <EmptyList />}
 				{loading && <Loading />}
 			</div>
-		</div>
+		</Container>
 	);
 };
 

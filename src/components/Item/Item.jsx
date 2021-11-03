@@ -6,7 +6,7 @@ const Item = ({ item: { id, title, pictureUrl, stock } }) => {
 	return (
 		<div className="col-sm-12 col-12 col-md-8 col-lg-5 col-xl-4">
 			<div className="card bg-light">
-				<img src={pictureUrl} className="card-pictureUrl-top" alt="..." />
+				<img src={pictureUrl} className="card-pictureUrl-top" alt={title} />
 				<div className="card-body">
 					<h5 className="card-title">{title}</h5>
 					<p className="card-text">Stock: {stock}</p>
